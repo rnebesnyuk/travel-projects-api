@@ -26,7 +26,7 @@ FastAPI CRUD application for managing travel projects and places.
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/travel-projects-api.git
+git clone https://github.com/rnebesnyuk/travel-projects-api.git
 cd travel-projects-api
 ```
 
