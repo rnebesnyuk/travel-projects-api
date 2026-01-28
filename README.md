@@ -21,6 +21,15 @@ FastAPI CRUD application for managing travel projects and places.
 - httpx (ArtIC API calls)
 - Docker / docker-compose
 
+## Get the project
+
+Clone the repository:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/travel-projects-api.git
+cd travel-projects-api
+```
+
 ## Run locally (without Docker)
 
 1) Create and activate virtualenv, install dependencies:
