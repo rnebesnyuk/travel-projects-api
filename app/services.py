@@ -87,8 +87,14 @@ async def create_project(db: Session, name: str, description, start_date, places
     return project
 
 
-def list_projects(db: Session):
-    return db.scalars(select(models.Project).order_by(models.Project.created_at.desc())).all()
+def list_projects(db: Session, limit: int, offset: int):
+    stmt = (
+        select(models.Project)
+        .order_by(models.Project.created_at.desc())
+        .limit(limit)
+        .offset(offset)
+    )
+    return db.scalars(stmt).all()
 
 
 def update_project(db: Session, project: models.Project, name, description, start_date):
@@ -165,12 +171,15 @@ async def add_place_to_project(db: Session, project: models.Project, external_id
     return place
 
 
-def list_places(db: Session, project: models.Project):
-    return db.scalars(
+def list_places(db: Session, project: models.Project, limit: int, offset: int):
+    stmt = (
         select(models.ProjectPlace)
         .where(models.ProjectPlace.project_id == project.id)
         .order_by(models.ProjectPlace.created_at.desc())
-    ).all()
+        .limit(limit)
+        .offset(offset)
+    )
+    return db.scalars(stmt).all()
 
 
 def update_place(db: Session, project: models.Project, place: models.ProjectPlace, notes, visited):

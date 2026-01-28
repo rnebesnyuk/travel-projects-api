@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, Query
 from sqlalchemy.orm import Session
 
 from fastapi.responses import HTMLResponse
@@ -40,8 +40,12 @@ async def create_project(payload: schemas.ProjectCreate, db: Session = Depends(g
 
 
 @app.get("/projects", response_model=list[schemas.ProjectListOut])
-def get_projects(db: Session = Depends(get_db)):
-    return services.list_projects(db)
+def get_projects(
+    limit: int = Query(20, ge=1, le=100),
+    offset: int = Query(0, ge=0),
+    db: Session = Depends(get_db),
+):
+    return services.list_projects(db, limit=limit, offset=offset)
 
 
 @app.get("/projects/{project_id}", response_model=schemas.ProjectOut)
@@ -84,9 +88,14 @@ async def add_place(project_id: int, payload: schemas.PlaceCreate, db: Session =
 
 
 @app.get("/projects/{project_id}/places", response_model=list[schemas.PlaceOut])
-def get_places(project_id: int, db: Session = Depends(get_db)):
+def get_places(
+    project_id: int,
+    limit: int = Query(20, ge=1, le=100),
+    offset: int = Query(0, ge=0),
+    db: Session = Depends(get_db),
+):
     project = services.get_project_or_404(db, project_id)
-    return services.list_places(db, project)
+    return services.list_places(db, project, limit=limit, offset=offset)
 
 
 @app.get("/projects/{project_id}/places/{place_id}", response_model=schemas.PlaceOut)
