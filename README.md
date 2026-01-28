@@ -10,6 +10,7 @@ FastAPI CRUD application for managing travel projects and places.
 - When all places are visited, the project becomes **completed**
 - Prevent duplicates: the same external place cannot be added twice to the same project
 - Prevent deleting a project if any of its places are visited
+- List endpoints support pagination
 
 
 ## Tech stack
