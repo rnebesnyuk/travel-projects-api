@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 24px;
+            max-width: 1000px;
+        }
+
+        .row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 12px;
+            border-radius: 8px;
+            width: 460px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            margin: 6px 0;
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px 10px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .muted {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .error {
+            color: #b00020;
+            white-space: pre-wrap;
+        }
+
+        .ok {
+            color: #0a7a0a;
+            white-space: pre-wrap;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 2px 8px;
+            border: 1px solid #ddd;
+            border-radius: 999px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/">← Back to projects</a>
+    <h1>Project <span class="pill" id="project_id"></span></h1>
+
+    <div id="project_info" class="card"></div>
+
+    <h2>Add place to this project</h2>
+    <div class="card">
+        <label>External ID (ArtIC artwork id)</label>
+        <input id="add_external_id" placeholder="e.g. 27992" />
+
+        <label>Notes (optional)</label>
+        <textarea id="add_notes" rows="2"></textarea>
+
+        <button id="btn_add">Add place</button>
+        <div id="add_msg" class="muted"></div>
+    </div>
+
+    <h2>Places</h2>
+    <div id="places_msg" class="muted"></div>
+    <div id="places" class="row"></div>
+
+    <script>
+        window.PROJECT_ID = {{ project_id }};
+    </script>
+    <script src="/static/project.js"></script>
+</body>
+
+</html>

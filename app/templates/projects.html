@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel Projects</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; max-width: 1000px; }
+    .row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .card { border: 1px solid #ddd; padding: 12px; border-radius: 8px; width: 320px; }
+    input, textarea { width: 100%; margin: 6px 0; padding: 8px; }
+    button { padding: 8px 10px; margin-right: 8px; cursor: pointer; }
+    .muted { color: #666; font-size: 12px; }
+    .error { color: #b00020; white-space: pre-wrap; }
+    .ok { color: #0a7a0a; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Travel Projects</h1>
+
+  <h2>Create project</h2>
+  <div class="card">
+    <label>Name</label>
+    <input id="p_name" placeholder="e.g. Chicago Weekend" />
+
+    <label>Description (optional)</label>
+    <textarea id="p_desc" rows="3" placeholder="e.g. Modern art route"></textarea>
+
+    <label>Start date (optional)</label>
+    <input id="p_date" type="date" />
+
+    <label>Places (required, min 1). External IDs comma-separated</label>
+    <input id="p_places" placeholder="e.g. 27992,129884" />
+
+    <button id="btn_create">Create</button>
+    <div id="create_msg" class="muted"></div>
+  </div>
+
+  <h2>Projects</h2>
+  <div id="msg" class="muted"></div>
+  <div id="projects" class="row"></div>
+
+  <script src="/static/projects.js"></script>
+</body>
+</html>
